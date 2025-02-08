@@ -4,6 +4,7 @@ origin_string = 'www.my_site.com#about'
 enhanced_string = origin_string.replace('#', '/')
 print(enhanced_string)
 
+
 # 2. ‘ing’
 def add_ing():
 
