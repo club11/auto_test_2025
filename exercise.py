@@ -9,10 +9,11 @@ def add_ing():
 
     print("Enter a word or a sentence to 'ing' modify:")
     given_data = input()
-    ing_added_word= ''
+    ing_added_word = ''
     if isinstance(given_data,  str):
         ing_added_word = given_data + 'ing'
     return print('Your ing added text is:   ', ing_added_word)
+
 
 add_ing()
 
@@ -22,15 +23,17 @@ lst_name, name = ivanov_str.split(' ')
 ivanov_str_new = name+' '+lst_name
 print(ivanov_str_new)
 
+
 # 4. Delete a space at the beginning and end of the line.
 def del_space_in_string():
 
     print("Enter a word or a sentence to delete spaces:")
     given_data = input()
-    modified_word= ''
+    modified_word = ''
     if isinstance(given_data,  str):
         modified_word = given_data.strip()
     return print('Your modified text is:', modified_word)
+
 
 del_space_in_string()
 
