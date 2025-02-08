@@ -6,6 +6,7 @@ print(enhanced_string)
 
 # 2. ‘ing’
 def add_ing():
+
     print("Enter a word or a sentence to 'ing' modify:")
     given_data = input()
     ing_added_word= ''
@@ -23,6 +24,7 @@ print(ivanov_str_new)
 
 # 4. Delete a space at the beginning and end of the line.
 def del_space_in_string():
+
     print("Enter a word or a sentence to delete spaces:")
     given_data = input()
     modified_word= ''
@@ -63,7 +65,8 @@ print(str_got)
 # 9. Create a list of 10 elements, insert a
 # new value at the 3rd position,
 # remove the element from the list at index 6
-ten_elements_list = ['съешь', 'же', 'ещё', 'этих', 'мягких', 'французских', 'булок', 'да', 'выпей', 'чаю']
+ten_elements_list = ['съешь', 'же', 'ещё', 'этих', 'мягких',
+                     'французских', 'булок', 'да', 'выпей', 'чаю']
 print(len(ten_elements_list))
 ten_elements_list.insert(3, 'Император защищает!')
 print(ten_elements_list, len(ten_elements_list))
