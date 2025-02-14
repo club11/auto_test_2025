@@ -98,11 +98,11 @@ def input_time():
     return got_time
 
 
-
 def main():
     timer_data_to_time(808)
     skyrim_2(experience, reward, threshold)
     input_time()
+
 
 if __name__ == "__main__":
     main()
