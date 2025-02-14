@@ -87,20 +87,22 @@ def time_converter(time_pandas):
         else:
             part_of_day = 'p.m.'
         time_pandas = time_pandas + part_of_day
-    return print(time_pandas)
+    return time_pandas
 
 
 def input_time():
     ewige = True
+    got_time = None
     while ewige is True:
         get_time = input('Пожалуйста, введите время в формате: "00:00":')
         try:
             if int(get_time[:2]) < 25 and int(get_time[-2:]) < 60:
-                time_converter(get_time)
+                got_time = time_converter(get_time)
                 ewige = False
         except ValueError:
             continue
-    return None
+    return got_time
 
 input_time()
+
 
