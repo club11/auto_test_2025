@@ -28,6 +28,7 @@ def timer_data_to_time(current_timer):
     return print(f'Ну, тип ты герой асфальта уже '
                  f'{hours} ч. {minutes} мин. - {time_summary} то бишь.')
 
+
 timer_data_to_time(808)
 
 
@@ -53,6 +54,7 @@ def skyrim_2(exp, rew, thresh):
         return print(f'experience = {exp}, threshold = {rew}, '
                      f'и reward = {thresh} ---- result is... false')
 
+
 experience = 10
 threshold = 15
 reward = 4
@@ -77,7 +79,10 @@ skyrim_2(experience, reward, threshold)
 
 
 def time_converter(time_pandas):
-    if isinstance(time_pandas, str) and time_pandas[:2].isdigit() and time_pandas[-2:].isdigit() and ':' in time_pandas and int(time_pandas[:2]) < 25 and int(time_pandas[-2:]) < 60:
+    if (isinstance(time_pandas, str)
+            and time_pandas[:2].isdigit()
+            and time_pandas[-2:].isdigit()
+            and ':' in time_pandas):
         if int(time_pandas[:2]) < 12:
             part_of_day = ' a.m.'
         else:
@@ -99,6 +104,3 @@ def input_time():
     return ''
 
 input_time()
-#time_converter('00:00')
-
-
