@@ -77,9 +77,7 @@ skyrim_2(experience, reward, threshold)
 
 
 def time_converter(time_pandas):
-    if (isinstance(time_pandas, str) and time_pandas[:2].isdigit()
-            and time_pandas[-2:].isdigit() and ':' in time_pandas
-            and int(time_pandas[:2]) < 25 and int(time_pandas[-2:]) < 60):
+    if isinstance(time_pandas, str) and time_pandas[:2].isdigit() and time_pandas[-2:].isdigit() and ':' in time_pandas and int(time_pandas[:2]) < 25 and int(time_pandas[-2:]) < 60:
         if int(time_pandas[:2]) < 12:
             part_of_day = ' a.m.'
         else:
@@ -88,6 +86,19 @@ def time_converter(time_pandas):
     return print(time_pandas)
 
 
-time_converter('00:00')
+def input_time():
+    ewige = True
+    while ewige is True:
+        get_time = input('Пожалуйста, введите время в формате: "00:00":')
+        try:
+            if int(get_time[:2]) < 25 and int(get_time[-2:]) < 60:
+                time_converter(get_time)
+                ewige = False
+        except ValueError:
+            continue
+    return ''
+
+input_time()
+#time_converter('00:00')
 
 
