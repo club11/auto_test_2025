@@ -28,9 +28,6 @@ def timer_data_to_time(current_timer):
                  f'{hours} ч. {minutes} мин. - {time_summary} то бишь.')
 
 
-timer_data_to_time(808)
-
-
 # Level Up
 # Вы играете в ролевую игру. В настоящее время
 # общее количество ваших очков опыта (XP) равно опыту.
@@ -57,9 +54,6 @@ def skyrim_2(exp, rew, thresh):
 experience = 10
 threshold = 15
 reward = 4
-
-
-skyrim_2(experience, reward, threshold)
 
 
 # Time converter
@@ -103,6 +97,12 @@ def input_time():
             continue
     return got_time
 
-input_time()
 
 
+def main():
+    timer_data_to_time(808)
+    skyrim_2(experience, reward, threshold)
+    input_time()
+
+if __name__ == "__main__":
+    main()
