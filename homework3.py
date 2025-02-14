@@ -100,7 +100,7 @@ def input_time():
                 ewige = False
         except ValueError:
             continue
-    return ''
+    return None
 
 input_time()
 
