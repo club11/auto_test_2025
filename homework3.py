@@ -20,14 +20,13 @@
 
 def timer_data_to_time(current_timer):
     time_summary, hours, minutes = 0, 0, 0
-    if type(current_timer) is int:
+    if isinstance(current_timer, int):
         hours, minutes = current_timer // 60, current_timer % 60
         time_in_str = (str(hours) + str(minutes))
         for i in time_in_str:
             time_summary += int(i)
     return print(f'Ну, тип ты герой асфальта уже '
                  f'{hours} ч. {minutes} мин. - {time_summary} то бишь.')
-
 
 timer_data_to_time(808)
 
@@ -54,10 +53,10 @@ def skyrim_2(exp, rew, thresh):
         return print(f'experience = {exp}, threshold = {rew}, '
                      f'и reward = {thresh} ---- result is... false')
 
-
 experience = 10
 threshold = 15
 reward = 4
+
 
 skyrim_2(experience, reward, threshold)
 
@@ -78,13 +77,16 @@ skyrim_2(experience, reward, threshold)
 
 
 def time_converter(time_pandas):
-    if type(time_pandas) is str and time_pandas[:2].isdigit() and time_pandas[-2:].isdigit() and ':' in time_pandas and int(time_pandas[:2]) < 25 and int(time_pandas[-2:]) < 60:
+    if (isinstance(time_pandas, str) and time_pandas[:2].isdigit()
+            and time_pandas[-2:].isdigit() and ':' in time_pandas
+            and int(time_pandas[:2]) < 25 and int(time_pandas[-2:]) < 60):
         if int(time_pandas[:2]) < 12:
             part_of_day = ' a.m.'
         else:
             part_of_day = 'p.m.'
         time_pandas = time_pandas + part_of_day
     return print(time_pandas)
+
 
 time_converter('00:00')
 
