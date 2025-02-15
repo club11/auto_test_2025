@@ -104,7 +104,6 @@ def input_time():
     return print(got_time)
 
 
-
 if __name__ == "__main__":
     timer_data_to_time()
     skyrim_2(experience, reward, threshold)
