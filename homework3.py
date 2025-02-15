@@ -17,13 +17,20 @@
 # Для n = 808, результат должен быть: 14
 # 808 минут прошло, и это означает что сейчас 13:28, так что ответ должен быть 1 + 3 + 2 + 8 = 14.
 
-def timer_data_to_time(current_timer):
+def timer_data_to_time():
+    ewige = True
     time_summary, hours, minutes = 0, 0, 0
-    if isinstance(current_timer, int):
-        hours, minutes = current_timer // 60, current_timer % 60
-        time_in_str = (str(hours) + str(minutes))
-        for i in time_in_str:
-            time_summary += int(i)
+    while ewige is True:
+        current_timer = input('Пожалуйста, введите целое число:')
+        try:
+            if isinstance(int(current_timer), int):
+                hours, minutes = int(current_timer) // 60, int(current_timer) % 60
+                time_in_str = (str(hours) + str(minutes))
+                for i in time_in_str:
+                    time_summary += int(i)
+                ewige = False
+        except ValueError:
+            continue
     return print(f'Ну, тип ты герой асфальта уже '
                  f'{hours} ч. {minutes} мин. - {time_summary} то бишь.')
 
@@ -77,10 +84,9 @@ def time_converter(time_pandas):
             and time_pandas[-2:].isdigit()
             and ':' in time_pandas):
         if int(time_pandas[:2]) < 12:
-            part_of_day = ' a.m.'
+            time_pandas = time_pandas + ' a.m.'
         else:
-            part_of_day = 'p.m.'
-        time_pandas = time_pandas + part_of_day
+            time_pandas = str(int(time_pandas[:2]) - 12) + time_pandas[2:] + ' p.m.'
     return time_pandas
 
 
@@ -95,14 +101,11 @@ def input_time():
                 ewige = False
         except ValueError:
             continue
-    return got_time
+    return print(got_time)
 
-
-def main():
-    timer_data_to_time(808)
-    skyrim_2(experience, reward, threshold)
-    input_time()
 
 
 if __name__ == "__main__":
-    main()
+    timer_data_to_time()
+    skyrim_2(experience, reward, threshold)
+    input_time()
