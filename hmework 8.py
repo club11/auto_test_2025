@@ -1,6 +1,7 @@
 # 1 Быки и коровы - Bulls and cows
 import random
 
+
 def generate_num():
     user_value = []
     loop_counter = 0
@@ -51,44 +52,29 @@ def bulls_cows_game():
             cows_num_output = len(cows_num)
             bulls_num_output = len(bulls_num)
             bull_counter = len(bulls_num)
-            cows_name_num = ''
-            bulls_name_num = ''
             if bull_counter == 4:
                 print(f'Вы угадали число {computer_user_value}')
             else:
-                if cows_num_output == 0:
-                    cows_name = '0'
-                    cows_name_num = 'коров'
-                elif cows_num_output == 1:
-                    cows_name = 'корова'
-                    cows_name_num = 'одна'
-                else:
-                    cows_name = 'коровы'
-                    if cows_num_output == 2:
-                        cows_name_num = 'две'
-                    if cows_num_output == 3:
-                        cows_name_num = 'три'
-                    if cows_num_output == 4:
-                        cows_name_num = 'четыре'
-                if bulls_num_output == 0:
-                    bulls_name = 'быков'
-                    bulls_name_num = '0'
-                elif bulls_num_output == 1:
-                    bulls_name = 'бык'
-                    bulls_name_num = 'один'
-                else:
-                    bulls_name = 'быка'
-                    if bulls_num_output == 2:
-                        bulls_name_num = 'два'
-                    if bulls_num_output == 3:
-                        bulls_name_num = 'три'
-                    if bulls_num_output == 4:
-                        bulls_name_num = 'четыре'
-                print(f'{cows_name_num} {cows_name}, '
-                      f'{bulls_name_num} {bulls_name}')
+                cows_dict = {0 : ('ноль', 'коров'),
+                             1 : ('одна', 'корова'),
+                             2: ('две', 'коровы'),
+                             3: ('три', 'коровы'),
+                             4: ('четыре', 'коровы')
+                             }
+                bulls_dict = {0: ('ноль', 'быков'),
+                             1: ('один', 'бык'),
+                             2: ('два', 'быка'),
+                             3: ('три', 'быка'),
+                             4: ('четыре', 'быка')
+                             }
+                print(f'{cows_dict[cows_num_output][0]} '
+                      f'{cows_dict[cows_num_output][1]}, '
+                      f'{bulls_dict[bulls_num_output][0]} '
+                      f'{bulls_dict[bulls_num_output][1]}'
+                      )
         else:
             print('ноль коров, ноль быков')
-    return
+    return print('игра окончена')
 
 
 # 2 Пирамида - pyramid
@@ -111,6 +97,8 @@ for n in range(1, 11):
 # Иными словами, у Вас отсутствуют статуи размеров 4, 5 и 7
 
 unsorted_list = [6, 2, 3, 8]
+
+
 def missing_statues_counter(sorted_list):
     sorted_list.sort()
     missing_values = []
@@ -119,7 +107,6 @@ def missing_statues_counter(sorted_list):
         for some_val in range(sorted_list[prev_val_index]+1, current_val):
             missing_values.append(some_val)
     missing_values.reverse()
-    #print('missing_values', missing_values)
     answer_is = len(missing_values)
     return print(f'количество недостающих статуй равно {answer_is}')
 
