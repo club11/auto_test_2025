@@ -20,17 +20,14 @@
 def timer_data_to_time():
     ewige = True
     time_summary, hours, minutes = 0, 0, 0
-    while ewige is True:
+    while ewige:
         current_timer = input('Пожалуйста, введите целое число:')
-        try:
-            if isinstance(int(current_timer), int):
-                hours, minutes = int(current_timer) // 60, int(current_timer) % 60
-                time_in_str = (str(hours) + str(minutes))
-                for i in time_in_str:
-                    time_summary += int(i)
-                ewige = False
-        except ValueError:
-            continue
+        if current_timer.isdigit():
+            hours, minutes = int(current_timer) // 60, int(current_timer) % 60
+            time_in_str = (str(hours) + str(minutes))
+            for i in time_in_str:
+                time_summary += int(i)
+            ewige = False
     return print(f'Ну, тип ты герой асфальта уже '
                  f'{hours} ч. {minutes} мин. - {time_summary} то бишь.')
 
@@ -93,13 +90,13 @@ def time_converter(time_pandas):
 def input_time():
     ewige = True
     got_time = None
-    while ewige is True:
+    while ewige:
         get_time = input('Пожалуйста, введите время в формате: "00:00":')
-        try:
+        if get_time[:2].isdigit() and get_time[-2:].isdigit():
             if int(get_time[:2]) < 25 and int(get_time[-2:]) < 60:
                 got_time = time_converter(get_time)
                 ewige = False
-        except ValueError:
+        else:
             continue
     return print(got_time)
 
