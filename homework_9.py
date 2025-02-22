@@ -1,5 +1,7 @@
 """Homework 9"""
-def solution(sequence) :
+
+
+def solution(sequence):
     """1. Последовательность"""
     if len(sequence) == 1:
         return print('True'), True
@@ -35,7 +37,7 @@ def card_validate():
         sum_to_double_odd_digits = sum(odd_digits)
         sum_to_double_even_digits = 0
         for d in even_digits:
-            control_val  = d * 2
+            control_val = d * 2
             if control_val > 9:
                 control_val -= 9
             sum_to_double_even_digits += control_val
