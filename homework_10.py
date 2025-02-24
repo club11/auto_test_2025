@@ -1,6 +1,7 @@
 """Homework 10"""
 
-def solution_1(text_to_check:str):
+
+def solution_1(text_to_check: str):
     """
     1.  ̶И̶м̶п̶е̶р̶а̶т̶о̶р̶ ̶з̶а̶щ̶и̶щ̶а̶е̶т̶!̶ рекурсия решает
     """
@@ -24,6 +25,7 @@ def solution_2(candl, pieces_for_one_candle):
     """
     candles_burn = 0
     rest_piec = 0
+
     def burn_candle(candles, num_to_divide, rest_pieces, candles_burned):
         while candles != 0:
             candles_burned += candles
