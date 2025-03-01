@@ -45,6 +45,7 @@ def validate_arguments_2(some_function):
                 raise MyException(number)
     return wrapper
 
+
 @validate_arguments_2
 def get_values_from_user_2():
     """
@@ -57,6 +58,7 @@ def get_values_from_user_2():
             break
     split_val = given_data.split(',')
     int_in_tuple = tuple(map(int, split_val))
+
     def function_with_arguments_given(*args):
         print(args, ' - arguments were given')
         return args
@@ -117,13 +119,15 @@ def cache(func):
     adds data to dict if not exist already = func(*args)!
     """
     cache_dict = {}
+
     def wrapper(*args):
         key_dict = args
-        #print('*args ===', *args)
+        # print('*args ===', *args)
         if key_dict not in cache_dict:
             cache_dict[key_dict] = func(*args)
         return cache_dict[key_dict]
     return wrapper
+
 
 @cache
 def fibonacci(n):
@@ -146,8 +150,8 @@ def call_funct_create_dict(some_func):
 
 
 if __name__ == "__main__":
-    #get_values_from_user(1, -5, 6)
-    #get_values_from_user_2()
-    #function_that_gives_something()
+    get_values_from_user(1, -5, 6)
+    get_values_from_user_2()
+    function_that_gives_something()
     add_useless_func_with_arguments(2, 5, 18)
-    #call_funct_create_dict(fibonacci)
+    call_funct_create_dict(fibonacci)
