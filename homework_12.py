@@ -44,7 +44,7 @@ class Bank:
             # for n in range(self.capitalization_number):money_to_return += \
             # Unused variable 'n' (unused-variable):
             # (Decimal(money_to_return) * Decimal(capitalization_for_period))
-            answer_is = round(money_to_return, 2) # до 2 знаков вместо формата + переменная!
+            answer_is = round(money_to_return, 2)  # до 2 знаков вместо формата + переменная!
             return answer_is
         return 'No money - no honey'
 
@@ -109,8 +109,8 @@ class Reader:
     """
     class Reader
     """
-    reservation_dict = {} # "reservation_dict: dict[<type>, <type>] = ..."
-    taken_book_dict = {} # "taken_book_dict: dict[<type>, <type>] = ..."
+    reservation_dict = {}  # type: dict[obj:obj]
+    taken_book_dict = {}  # type: dict[obj:obj]
 
     def __init__(self, reader_name):
         self.reader_name = reader_name
@@ -159,7 +159,9 @@ class Reader:
             Reader.taken_book_dict.pop(a_book)
 
 book = Book(book_name="The Hobbit",
-                author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+    author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+
+
 vasya = Reader("Vasya")
 petya = Reader("Petya")
 
@@ -167,6 +169,7 @@ vasya.reserve_book(book)
 petya.reserve_book(book)
 vasya.cancel_reserve(book)
 petya.reserve_book(book)
+
 vasya.get_book(book)
 petya.get_book(book)
 vasya.return_book(book)
