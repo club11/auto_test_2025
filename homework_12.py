@@ -11,7 +11,7 @@ class Bank:
     name = None
     start_balance = None
     years = None
-    annual_interest_rate = 12/100
+    annual_interest_rate = 12 / 100
     capitalization_number = 4
 
     def register_client(self, client_id, name):
@@ -160,8 +160,7 @@ class Reader:
 
 
 book = Book(book_name="The Hobbit",
-    author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023"
-)
+            author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
 
 vasya = Reader("Vasya")
 petya = Reader("Petya")
