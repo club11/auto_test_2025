@@ -109,8 +109,8 @@ class Reader:
     """
     class Reader
     """
-    reservation_dict = {}  # type: dict[obj:obj]
-    taken_book_dict = {}  # type: dict[obj:obj]
+    reservation_dict = {}  # type: dict
+    taken_book_dict = {}  # type: dict
 
     def __init__(self, reader_name):
         self.reader_name = reader_name
@@ -158,9 +158,10 @@ class Reader:
             a_book.return_book()
             Reader.taken_book_dict.pop(a_book)
 
-book = Book(book_name="The Hobbit",
-    author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
 
+book = Book(book_name="The Hobbit",
+    author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023"
+)
 
 vasya = Reader("Vasya")
 petya = Reader("Petya")
