@@ -1,5 +1,6 @@
 """Homework 12"""
 
+
 # 1. Банковский вклад
 class Bank:
     """
@@ -20,7 +21,6 @@ class Bank:
         # Bank.client_index += 1
         self.name = name
         self.client_id = client_id
-
 
     def open_deposit_account(self, client_id, start_balance, years):
         """
@@ -43,7 +43,7 @@ class Bank:
             # More than one statement on a single line (multiple-statements):
             # for n in range(self.capitalization_number):money_to_return += \
             # Unused variable 'n' (unused-variable):
-            #    (Decimal(money_to_return) * Decimal(capitalization_for_period))
+            # (Decimal(money_to_return) * Decimal(capitalization_for_period))
             answer_is = round(money_to_return, 2) # до 2 знаков вместо формата + переменная!
             return answer_is
         return 'No money - no honey'
@@ -64,8 +64,6 @@ bank.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
 ass = bank.calc_interest_rate(client_id="0000001")
 # print(ass, '===')
 bank.close_deposit(client_id="0000001")
-
-# assert bank.calc_interest_rate(client_id="0000001") == 1104.71
 
 
 # 2. Библиотека aka library;
@@ -98,21 +96,21 @@ class Book:
         """
         get a book from the pool
         """
-        self.book_is_taken  = True
+        self.book_is_taken = True
 
     def return_book(self):
         """
         return a book to the pool
         """
-        self.book_is_taken  = False
+        self.book_is_taken = False
 
 
 class Reader:
     """
     class Reader
     """
-    reservation_dict = {}
-    taken_book_dict = {}
+    reservation_dict = {} # "reservation_dict: dict[<type>, <type>] = ..."
+    taken_book_dict = {} # "taken_book_dict: dict[<type>, <type>] = ..."
 
     def __init__(self, reader_name):
         self.reader_name = reader_name
@@ -160,9 +158,8 @@ class Reader:
             a_book.return_book()
             Reader.taken_book_dict.pop(a_book)
 
-
 book = Book(book_name="The Hobbit",
-            author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+                author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
 vasya = Reader("Vasya")
 petya = Reader("Petya")
 
