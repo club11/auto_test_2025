@@ -71,14 +71,17 @@ class Book:
     """
     class Book
     """
-    book_is_reserved = False
-    book_is_taken = False
+    # book_is_reserved = False
+    # book_is_taken = False
 
     def __init__(self, book_name, author, num_pages, isbn):
         self.book_name = book_name
         self.author = author
         self.num_pages = num_pages
         self.isbn = isbn
+        self.book_is_reserved = False
+        self.book_is_taken = False
+
 
     def reserve(self):
         """
@@ -119,7 +122,7 @@ class Reader:
         """
         order a reservation of book from the pool
         """
-        if a_book.book_is_reserved is False:
+        if not a_book.book_is_reserved:
             a_book.reserve()
             Reader.reservation_dict[a_book] = self  # заменить на @classmethod
             print('book is reserved')
@@ -140,7 +143,7 @@ class Reader:
         """
         return a book from the pool
         """
-        if a_book.book_is_reserved is False:
+        if not a_book.book_is_reserved:
             a_book.get_book()
             Reader.taken_book_dict[a_book] = self
         elif Reader.reservation_dict[a_book] == self:
@@ -161,17 +164,22 @@ class Reader:
 
 book = Book(book_name="The Hobbit",
             author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+book_2 = Book(book_name="The Lord Of The Rings",
+            author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
+
+pool_of_books = [book, book_2]
 
 vasya = Reader("Vasya")
 petya = Reader("Petya")
 
-vasya.reserve_book(book)
-petya.reserve_book(book)
-vasya.cancel_reserve(book)
-petya.reserve_book(book)
+for the_book in pool_of_books:
+    vasya.reserve_book(the_book)
+    petya.reserve_book(the_book)
+    vasya.cancel_reserve(the_book)
+    petya.reserve_book(the_book)
 
-vasya.get_book(book)
-petya.get_book(book)
-vasya.return_book(book)
-petya.return_book(book)
-vasya.get_book(book)
+    vasya.get_book(the_book)
+    petya.get_book(the_book)
+    vasya.return_book(the_book)
+    petya.return_book(the_book)
+    vasya.get_book(the_book)
