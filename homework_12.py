@@ -80,7 +80,6 @@ class Book:
         self.book_is_reserved = False
         self.book_is_taken = False
 
-
     def reserve(self):
         """
          to reserve a book
@@ -163,7 +162,7 @@ class Reader:
 book = Book(book_name="The Hobbit",
             author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
 book_2 = Book(book_name="The Lord Of The Rings",
-            author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
+              author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
 
 pool_of_books = [book, book_2]
 
