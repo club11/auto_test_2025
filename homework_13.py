@@ -46,7 +46,9 @@ class CardsDeck:
     """
     # card_in_deck_dict = Dict[CardsDeck] - not work
     # card_in_deck_dict = Dict[dict] - same
-    card_in_deck_dict = {'obj':'num'}
+    # card_in_deck_dict = {'obj': 'num'}
+    # cause nothing has worked fine here I used again:
+    card_in_deck_dict = {} # type: dict
 
     def __init__(self):
         deck_lict = []
@@ -87,6 +89,7 @@ class CardsDeck:
             return print(f'You card is: {users_card_number.number_list}')
         return print(f'You card is: 'f'{users_card_number.number_list}, '
                      f'{users_card_number.mast_list}')
+
 
 def task_one_func():
     """
