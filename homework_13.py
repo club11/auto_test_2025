@@ -4,7 +4,8 @@
 # 1. Колода карт "Without us, you don't have any cards". Some guy
 import random
 import requests
-from  homework_12 import Bank
+from homework_12 import Bank
+# from typing import Dict
 # from homework_13_1 import task_three_func
 ALL_CURRENCIES_ENDPOINT = 'https://www.nbrb.by/api/exrates/rates?periodicity=0'
 
@@ -43,7 +44,9 @@ class CardsDeck:
     """
     class CardsDeck
     """
-    card_in_deck_dict = {}
+    # card_in_deck_dict = Dict[CardsDeck] - not work
+    # card_in_deck_dict = Dict[dict] - same
+    card_in_deck_dict = {'obj':'num'}
 
     def __init__(self):
         deck_lict = []
@@ -56,12 +59,12 @@ class CardsDeck:
         deck_lict = dict(enumerate(deck_lict))
 
         for u_have_no_cards, we_do in deck_lict.items():
-            if we_do[0] != 'Jocker':  #  несколько коряво-нужно условие!!
-                #print(we_do[0], we_do[1])
+            if we_do[0] != 'Jocker':  # несколько коряво-нужно условие!!
+                # print(we_do[0], we_do[1])
                 some_card = Card(we_do[0], we_do[1])
                 self.card_in_deck_dict[u_have_no_cards+1] = some_card
             else:
-                #print(we_do[0])
+                # print(we_do[0])
                 some_card = Card(we_do[0], None)
                 self.card_in_deck_dict[u_have_no_cards+1] = some_card
 
@@ -81,7 +84,7 @@ class CardsDeck:
         """
         users_card_number = CardsDeck.card_in_deck_dict[card_number]
         if not users_card_number.mast_list:
-            return print( f'You card is: {users_card_number.number_list}')
+            return print(f'You card is: {users_card_number.number_list}')
         return print(f'You card is: 'f'{users_card_number.number_list}, '
                      f'{users_card_number.mast_list}')
 
@@ -122,6 +125,7 @@ class Person:
         # to avoid "Too few public methods" pylint Error
         """
         return print("pylint makes me do that!")
+
 
 class CurrencyConverter(Bank):
     """
@@ -164,10 +168,10 @@ class CurrencyConverter(Bank):
 # converter.exchange_currency(vasya.curr, vasya.amount)
 # converter.exchange_currency(petya.curr, petya.amount, 'USD')
 
+
 def task_two_func():
     """
     gimme_money - currency convertor!
-    :return:
     """
     skip_finally = False
     converter = CurrencyConverter()
