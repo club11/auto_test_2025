@@ -48,7 +48,7 @@ class CardsDeck:
     # card_in_deck_dict = Dict[dict] - same
     # card_in_deck_dict = {'obj': 'num'}
     # nothing has worked fine here I used again:
-    card_in_deck_dict = {}  # type: dict
+    card_in_deck_dict: dict = {}
 
     def __init__(self):
         deck_lict = []
