@@ -51,6 +51,8 @@ class CardsDeck:
     def __init__(self):
         counter = 1
         for n_1 in Card.number_list:
+            if counter == 55:
+                break
             for k in Card.mast_list:
                 CardsDeck.deck_lict.append(Card(number_list=n_1, mast_list=k, num=counter))
                 counter += 1
