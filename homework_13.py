@@ -134,7 +134,7 @@ class CurrencyConverter(Bank):
     """
     class CurrencyConverter
     """
-    currency_dict = {}
+    currency_dict: dict = {}
     currency_input = None
     amount_num = None
     exchange_output = None
