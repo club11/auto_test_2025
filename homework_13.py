@@ -17,13 +17,15 @@ class Card:
     number_list = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace', 'Jocker']
     mast_list = ['Diamonds', 'Clubs', 'Hearts', 'Spades']
 
-    def __init__(self, number_list, mast_list):
+    def __init__(self, number_list, mast_list, num):
         if number_list == 'Jocker':
             self.number_list = number_list
-            self.mast_list = None
+            self.mast_list = ''
+            self.num = num
         else:
             self.number_list = number_list
             self.mast_list = mast_list
+            self.num = num
 
     @staticmethod
     def print_data():
@@ -44,51 +46,32 @@ class CardsDeck:
     """
     class CardsDeck
     """
-    # card_in_deck_dict = Dict[CardsDeck] - not work
-    # card_in_deck_dict = Dict[dict] - same
-    # card_in_deck_dict = {'obj': 'num'}
-    # nothing has worked fine here I used again:
-    card_in_deck_dict: dict = {}
+    deck_lict = []
 
     def __init__(self):
-        deck_lict = []
-        for n_1 in Card.number_list[:-1]:
+        counter = 1
+        for n_1 in Card.number_list:
             for k in Card.mast_list:
-                some_values = n_1, k
-                deck_lict.append(some_values)
-        deck_lict.append(('Jocker', None))
-        deck_lict.append(('Jocker', None))
-        deck_lict = dict(enumerate(deck_lict))
-
-        for u_have_no_cards, we_do in deck_lict.items():
-            if we_do[0] != 'Jocker':  # несколько коряво-нужно условие!!
-                # print(we_do[0], we_do[1])
-                some_card = Card(we_do[0], we_do[1])
-                self.card_in_deck_dict[u_have_no_cards+1] = some_card
-            else:
-                # print(we_do[0])
-                some_card = Card(we_do[0], None)
-                self.card_in_deck_dict[u_have_no_cards+1] = some_card
+                CardsDeck.deck_lict.append(Card(number_list=n_1, mast_list=k, num=counter))
+                counter += 1
 
     @staticmethod
     def shuffle():
         """
         get random card
         """
-        random_card_num = random.choice(Card.number_list)
-        random_card_suit = random.choice(Card.mast_list)
-        return random_card_num, random_card_suit
+        random_card = random.choice(CardsDeck.deck_lict)
+        return random_card
 
     @staticmethod
     def get(card_number):
         """
         return a card by its number
         """
-        users_card_number = CardsDeck.card_in_deck_dict[card_number]
-        if not users_card_number.mast_list:
-            return print(f'You card is: {users_card_number.number_list}')
-        return print(f'You card is: 'f'{users_card_number.number_list}, '
-                     f'{users_card_number.mast_list}')
+        for obj in CardsDeck.deck_lict:
+            if card_number == obj.num:
+                return print(f'You card is: {obj.number_list}, {obj.mast_list}')
+        return print('Нет такой карты')
 
 
 def task_one_func():
