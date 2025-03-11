@@ -46,7 +46,7 @@ class CardsDeck:
     """
     class CardsDeck
     """
-    deck_lict = []
+    deck_lict: list = []
 
     def __init__(self):
         counter = 1
