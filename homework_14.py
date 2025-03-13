@@ -99,11 +99,11 @@ def check_parol(some_parol):
     """
     to check_parol
     """
-    #result = re.match('/^[0-9a-zA-Z]{4,}$', some_parol) # д.б. поверить
+    # result = re.match('/^[0-9a-zA-Z]{4,}$', some_parol) # д.б. поверить
     if len(some_parol) < 4:
         return print('something went wrong!!!!!')
     success_check = True
-    validators_lat = ('[0-9]', '[A-Z]','[a-z]')
+    validators_lat = ('[0-9]', '[A-Z]', '[a-z]')
     validators_kir = ('[0-9]', '[А-Я]', '[а-я]')
     for valid in validators_lat:
         if not re.search(valid, some_parol):
@@ -123,14 +123,15 @@ def check_parol(some_parol):
 # 4. В предложении допущены ошибки. Необходимо исправить каждый такой
 # повтор (слово, один или несколько пробельных символов, и снова то же слово).
 A_STRING = ("Довольно  распространённая ошибка  ошибка — это лишний повтор повтор слова слова. "
-          "Смешно, не не правда ли? Не нужно портить хор хоровод")
+            "Смешно, не не правда ли? Не нужно портить хор хоровод")
 pattern = re.compile(r'\s{2}')
 sentence = re.sub(pattern, ' ', A_STRING)
 PATTERN = r"\s{2+}"
 re_result = re.split(PATTERN, sentence)
 to_change_is = {'ошибка ошибка': 'ошибка', 'повтор повтор': 'повтор повтор',
-             'слова слова': 'слова', 'не не': 'не', 'хор хоровод': 'хоровод'}
+                'слова слова': 'слова', 'не не': 'не', 'хор хоровод': 'хоровод'}
 final_string_is = sentence
+
 
 def change_sentence(final_string, to_change):
     """
@@ -140,6 +141,7 @@ def change_sentence(final_string, to_change):
         new_string = re.sub(ex_change, ex, final_string)
         final_string = new_string
     return print(final_string)
+
 
 # 5. XML
 root = Et.Element("data")
@@ -153,6 +155,7 @@ Et.SubElement(doc, "price", name="price").text = "200"
 Et.SubElement(doc, "currency", name="price").text = "USD"
 tree = Et.ElementTree(root)
 tree.write("not_best_choice.xml")
+
 
 def parse_xml(xml_str):
     """
@@ -175,7 +178,9 @@ def parse_xml(xml_str):
 # Напишите программу, которая считывает данные из файла и выводит
 # на экран информацию о клубе с наибольшим количеством побед.
 
+
 JSON_FILE = 'champions_league.json'
+
 
 def json_football_clubs(some_json):
     """
@@ -194,18 +199,19 @@ def json_football_clubs(some_json):
                 win = wins
     return print(club_win_max, max_wins)
 
+
 # 7. YAML
 # Создайте YAML файл, содержащий информацию о книгах
 # (название, автор, год выпуска).
 # Напишите программу, которая считывает данные
 # из файла и позволяет пользователю добавлять новые книги в файл.
 
-yml_data = {'book_1':['Great_book', 'Great_author', 1999],
-            'book_2':['Great_book2', 'Great_author2', 2001]}
+yml_data = {'book_1': ['Great_book', 'Great_author', 1999],
+            'book_2': ['Great_book2', 'Great_author2', 2001]}
 with open('yml_data_file.yml', 'w', encoding='utf-8', errors='replace') as yaml_file:
     yaml.dump(yml_data, yaml_file, default_flow_style=False)
 
-to_yaml = {'book_3':['Great_book3', 'Great_author3', 2025]}
+to_yaml = {'book_3': ['Great_book3', 'Great_author3', 2025]}
 YML_FILE = "yml_data_file.yml"
 
 
