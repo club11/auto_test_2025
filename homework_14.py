@@ -31,6 +31,7 @@ class Student:
         """
         return print("pylint makes me do that!")
 
+
 students_list: list = []
 
 
@@ -222,6 +223,7 @@ def yml_file_red_write(some_yml):
     with open(some_yml, 'r+', encoding='utf-8', errors='replace') as stream:
         yaml.safe_load(stream)
         yaml.dump(to_yaml, stream, default_flow_style=False, allow_unicode=True)
+
 
 yml_file_red_write(YML_FILE)
 
