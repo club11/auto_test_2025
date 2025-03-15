@@ -20,7 +20,6 @@ def task_seven(some_yml):
     with open('yml_data_file.yml', 'w', encoding='utf-8', errors='replace') as yaml_file:
         yaml.dump(yml_data, yaml_file, default_flow_style=False)
 
-
     def yml_file_red_write(some_yml_is):
         """
         work with yml file
@@ -29,7 +28,6 @@ def task_seven(some_yml):
         with open(some_yml_is, 'r+', encoding='utf-8', errors='replace') as stream:
             yaml.safe_load(stream)
             yaml.dump(to_yaml, stream, default_flow_style=False, allow_unicode=True)
-
 
     yml_file_red_write(some_yml)
 

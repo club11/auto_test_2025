@@ -19,7 +19,6 @@ def task_four(some_task):
                     'слова слова': 'слова', 'не не': 'не', 'хор хоровод': 'хоровод'}
     final_string_is = sentence
 
-
     def change_sentence(final_string, to_change):
         """
         to change_sentence, duplicates exclude
@@ -28,7 +27,6 @@ def task_four(some_task):
             new_string = re.sub(ex_change, ex, final_string)
             final_string = new_string
         return print(final_string)
-
 
     return change_sentence(final_string_is, to_change_is)
 

@@ -33,7 +33,6 @@ def task_five():
             total_cost += (int(price))
         return print('total_cost =', total_cost)
 
-
     return parse_xml("not_best_choice.xml")
 
 

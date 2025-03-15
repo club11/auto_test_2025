@@ -49,7 +49,6 @@ def task_one():
     """
     create_student_groups(students_list)
 
-
     with open('students.txt', 'w+', encoding='utf-8', errors='replace') as file:
         for student in students_list:
             file.write(f'{student.student_name}, {student.grade}, {student.group}\n')
