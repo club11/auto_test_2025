@@ -25,7 +25,7 @@ def json_football_clubs(some_json):
                 club_win_max = club[0]
                 max_wins = wins
                 win = wins
-    return print(club_win_max, max_wins)
+    return club_win_max, max_wins
 
 
 if __name__ == "__main__":
