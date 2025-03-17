@@ -6,7 +6,7 @@ from hm14_3_files import check_parol
 from hm14_4_files import task_four, A_STRING
 from hm14_5_files import task_five
 from hm14_6_files import json_football_clubs, JSON_FILE
-from hm14_7_files import task_seven, YML_FILE
+from hm14_7_files import task_seven, yml_data
 
 if __name__ == "__main__":
     task_one()
@@ -15,4 +15,4 @@ if __name__ == "__main__":
     task_four(A_STRING)
     task_five()
     json_football_clubs(JSON_FILE)
-    task_seven(YML_FILE)
+    task_seven(yml_data)

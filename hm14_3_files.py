@@ -2,6 +2,7 @@
 
 import re
 
+
 # 3. Проверка паролей
 class Parol:
     """
@@ -17,7 +18,7 @@ class Parol:
         print(self.some_parol)
 
     @staticmethod
-    def useless_func(self):
+    def useless_func():
         """
         to make smth in the future
         """
@@ -28,7 +29,7 @@ def parol_function():
     """
     check parol by its length and given letters
     """
-    parol_data= input('введите пароль:')
+    parol_data = input('введите пароль:')
     if len(parol_data) < 4:
         print('something went wrong!!!!!')
         return False

@@ -12,13 +12,14 @@ YML_FILE = "yml_data_file.yml"
 yml_data = {'book_1': ['Great_book', 'Great_author', 1999],
             'book_2': ['Great_book2', 'Great_author2', 2001]}
 
-def task_seven(some_yml, given_data):
+
+def task_seven(given_data):
     """
     task 7 yaml file
     """
-
     with open('yml_data_file.yml', 'w', encoding='utf-8', errors='replace') as yaml_file:
         yaml.dump(given_data, yaml_file, default_flow_style=False)
+
 
 def yml_file_read_write(some_yml_is):
     """
@@ -31,5 +32,5 @@ def yml_file_read_write(some_yml_is):
 
 
 if __name__ == "__main__":
-    task_seven(YML_FILE, yml_data)
+    task_seven(yml_data)
     yml_file_read_write(YML_FILE)
