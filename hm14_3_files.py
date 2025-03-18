@@ -43,9 +43,9 @@ def check_is_latin_language(a_text):
     """
     try:
         a_text.encode(encoding='utf-8').decode('ascii')
-        return 'is_latin'
+        return True
     except UnicodeDecodeError:
-        return 'not_latin'
+        return False
 
 
 def language_serialize(a_language):
@@ -54,7 +54,7 @@ def language_serialize(a_language):
     """
     validators_lat = ('[0-9]', '[A-Z]', '[a-z]')
     validators_kir = ('[0-9]', '[А-Я]', '[а-я]')
-    if a_language == 'is_latin':
+    if a_language:
         return validators_lat
     # if a_language == 'not_latin':
     return validators_kir
