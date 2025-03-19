@@ -27,5 +27,6 @@ def task_twelve():
     except ValueError:
         logging.error("An ERROR")
 
+
 if __name__ == "__main__":
     task_twelve()

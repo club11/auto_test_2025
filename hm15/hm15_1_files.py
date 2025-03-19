@@ -14,7 +14,7 @@ CANCELLED (Заказ отменён)
 
 from enum import Enum
 
-OrderStatus = Enum('PENDING','IN_PROGRESS READY COMPLETED CANCELLED', start=1)
+OrderStatus = Enum('PENDING', 'IN_PROGRESS READY COMPLETED CANCELLED', start=1)
 
 
 class Order:
