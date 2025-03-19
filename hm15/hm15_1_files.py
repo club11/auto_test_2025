@@ -43,7 +43,7 @@ def task_nine():
     """
     task_nine
     """
-    order = Order('PENDING', 1)
+    order = Order(1, 'PENDING')
     order.display_status()
 
     for order_status in OrderStatus:
