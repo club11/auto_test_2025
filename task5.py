@@ -6,6 +6,7 @@
 
 # num % 2 == 0
 
+
 def get_data(some_data):
     """
     check a palindrome
