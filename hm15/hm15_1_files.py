@@ -34,7 +34,7 @@ class Order:
 
     def display_status(self):
         """
-        display_status
+        display_status_of _order
         """
         print(f"{self.order_id} - {self.status}")
 
