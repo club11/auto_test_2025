@@ -6,6 +6,7 @@
 
 # num % 2 == 0
 
+
 def get_data(some_data):
     """
     check a palindrome
@@ -15,10 +16,8 @@ def get_data(some_data):
             first, second = n, some_data[-some_data.index(n)]
             print(first, second)
             if first != second:
-                return print('Not a palindrome')
-        return print('Is a palindrome')
-
-
+                print('Not a palindrome')
+        print('Is a palindrome')
 
 
 get_data('ssdfsdfy')

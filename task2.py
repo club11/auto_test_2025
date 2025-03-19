@@ -7,7 +7,8 @@ def square_func():
     :return:
     """
     get_data = input('enter some value:')
-    return int(get_data)  ** 2
+    return int(get_data) ** 2
+
 
 def even_func():
     """

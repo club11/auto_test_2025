@@ -28,6 +28,7 @@ def add_one_to_list(some_list):
         some_list[i] = 0
     return [1] + some_list
 
+
 number = [1, 2, 3]
 result = add_one_to_list(number)
 print(result)
