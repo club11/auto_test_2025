@@ -28,6 +28,7 @@ def task_eleven(given_date_str):
         if proceed == 'n':
             break
 
+
 given_date = input('введите первую дату в формате "ГГГГ-ММ-ДД":')
 
 
