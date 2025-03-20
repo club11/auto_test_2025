@@ -8,13 +8,12 @@
 import datetime
 
 
-def task_eleven():
+def task_eleven(given_date_str):
     """
     define is date in the future or in the past
     """
     while True:
         today_date = datetime.datetime.now().date()
-        given_date_str = input('введите первую дату в формате "ГГГГ-ММ-ДД":')
         given_date_object = datetime.datetime.strptime(given_date_str, '%Y-%m-%d').date()
         if given_date_object > today_date:
             print(f'сегодня {today_date} - '
@@ -29,6 +28,7 @@ def task_eleven():
         if proceed == 'n':
             break
 
+given_date = input('введите первую дату в формате "ГГГГ-ММ-ДД":')
 
 if __name__ == "__main__":
-    task_eleven()
+    task_eleven(given_date)
