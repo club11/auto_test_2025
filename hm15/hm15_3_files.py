@@ -30,5 +30,6 @@ def task_eleven(given_date_str):
 
 given_date = input('введите первую дату в формате "ГГГГ-ММ-ДД":')
 
+
 if __name__ == "__main__":
     task_eleven(given_date)
