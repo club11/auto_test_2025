@@ -20,4 +20,4 @@ def get_data(some_data):
         print('Is a palindrome')
 
 
-get_data('ssdfsdfy')
+get_data('abcdcba')

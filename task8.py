@@ -48,11 +48,11 @@ def a_game():
     # first_solder = Solder(1, 1)
     random_val = random.randrange(1, 10)
 
-    teams_solder = [first_hero, first_hero]
+    teams_solder: list = [first_hero, first_hero]
     for _ in range(random_val):
         random_team = random.randrange(1, 3)
         new_solder = Solder(1, random_team)
-        print(new_solder.solder_feature)
+        print(new_solder.solder_num)
         teams_solder.append(teams_solder)
     team_1_count = 0
     team_2_count = 0
