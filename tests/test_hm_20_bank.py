@@ -18,7 +18,6 @@ class TestBank(unittest.TestCase):
         TestBank.bank.register_client(client_id, client_name)
         TestBank.bank.open_deposit_account(client_id, start_balance, years)
         cls.money_to_return = TestBank.bank.calc_interest_rate(client_id)
-        cls.deposit_closed = TestBank.bank.close_deposit(client_id)
 
     @classmethod
     def tearDownClass(cls):

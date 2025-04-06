@@ -8,10 +8,11 @@ class TestBook(unittest.TestCase):
     """
     Test case for Book module
     """
+
     @classmethod
     def setUpClass(cls):
         cls.book = Book(book_name="TheTEST",
-            author="The test author", num_pages=400, isbn="0006754023")
+                        author="The test author", num_pages=400, isbn="0006754023")
 
     @classmethod
     def tearDownClass(cls):
@@ -56,15 +57,17 @@ class TestBook(unittest.TestCase):
             TestBook.book.return_book()
             self.assertFalse(TestBook.book.book_is_taken)
 
+
 class TestReader(unittest.TestCase):
     """
     Test case for Book-Reader module
     """
+
     @classmethod
     def setUpClass(cls):
         cls.reader = Reader("Vasya")
         cls.book = Book(book_name="TheTEST",
-             author="The test author", num_pages=400, isbn="0006754023")
+                        author="The test author", num_pages=400, isbn="0006754023")
 
     @classmethod
     def tearDownClass(cls):
