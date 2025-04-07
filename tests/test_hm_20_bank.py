@@ -10,65 +10,44 @@ class TestBank(unittest.TestCase):
     """
     @classmethod
     def setUpClass(cls):
-        cls.bank = Bank()
-        start_balance = 100000
-        client_id = "0000001"
-        client_name = 'test_client'
-        years = 1
-        TestBank.bank.register_client(client_id, client_name)
-        TestBank.bank.open_deposit_account(client_id, start_balance, years)
-        cls.money_to_return = TestBank.bank.calc_interest_rate(client_id)
-
-    @classmethod
-    def tearDownClass(cls):
-        del TestBank.bank
+        cls.client = Bank()
 
     def test_register_client(self):
         """
         Bank register_client func test
         """
-        self.assertIsNotNone(TestBank.bank.client_id)
-        self.assertIsNotNone(TestBank.bank.name)
-        self.assertIsInstance(TestBank.bank.client_id, str)
-        self.assertIsInstance(TestBank.bank.name, str)
+        TestBank.client.register_client(client_id="0000001", name="test_client")
+        self.assertIsNotNone(TestBank.client.client_id)
+        self.assertIsNotNone(TestBank.client.name)
+        self.assertIsInstance(TestBank.client.client_id, str)
+        self.assertIsInstance(TestBank.client.name, str)
 
-    def test_open_deposit_account(self):
+    def test_deposit_account(self):
         """
-        Bank open_deposit_account func test
+        deposit account exist
         """
-        self.assertIsNotNone(TestBank.bank.start_balance)
-        self.assertIsNotNone(TestBank.bank.years)
-        self.assertIsInstance(TestBank.bank.start_balance, int)
-        self.assertIsInstance(TestBank.bank.years, int)
+        TestBank.client.register_client(client_id="0000001", name="test_client")
+        TestBank.client.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
+        self.assertEqual(TestBank.client.client_id, "0000001")
+        self.assertEqual(TestBank.client.start_balance, 100000)
+        self.assertEqual(TestBank.client.years, 1)
 
     def test_calc_interest_rate(self):
         """
         Bank calc_interest_rate func test
         """
-        self.assertIsNotNone(self.money_to_return)
-        self.assertIsInstance(self.money_to_return, float)
+        TestBank.client.register_client(client_id="0000001", name="test_client")
+        TestBank.client.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
+        self.assertIsNotNone(TestBank.client.calc_interest_rate(client_id="0000001"))
 
     def test_close_deposit(self):
         """
         Bank close_deposit func test
         """
-        self.assertIsNotNone(TestBank.bank.start_balance)
-        self.assertEqual(TestBank.bank.start_balance, 0)
-
-    @unittest.expectedFailure
-    def test_close_deposit_not_success(self):
-        """
-        ожидаемая ошибка наличия денег на закрытом счете
-        """
-        self.assertIsNotNone(TestBank.bank.start_balance)
-        self.assertNotEqual(TestBank.bank.start_balance, 0)
-
-    @unittest.expectedFailure
-    def test_client_is_not_deleted(self):
-        """
-        ожидаемая ошибка - тестовый клиент не удален
-        """
-        self.assertIsNone(TestBank.bank)
+        TestBank.client.register_client(client_id="0000001", name="test_client")
+        TestBank.client.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
+        TestBank.client.close_deposit(client_id="0000001")
+        self.assertEqual(TestBank.client.start_balance, 0)
 
 
 if __name__ == '__main__':

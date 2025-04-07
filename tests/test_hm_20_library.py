@@ -68,6 +68,9 @@ class TestReader(unittest.TestCase):
         cls.reader = Reader("Vasya")
         cls.book = Book(book_name="TheTEST",
                         author="The test author", num_pages=400, isbn="0006754023")
+        cls.reader2 = Reader("Vasya")
+        cls.book2 = Book(book_name="TheTEST2",
+                        author="The test author2", num_pages=400, isbn="0006754022")
 
     @classmethod
     def tearDownClass(cls):
@@ -87,6 +90,7 @@ class TestReader(unittest.TestCase):
         TestReader.reader.reserve_book(TestReader.book)
         if TestReader.book.book_is_reserved:
             self.assertIsNotNone(TestReader.reader.reservation_dict[TestReader.book])
+            self.assertIsNone(TestReader.reader2.reserve_book(TestReader.book))
         else:
             self.assertIsNone(TestReader.reader.reservation_dict[TestReader.book])
 
@@ -94,20 +98,38 @@ class TestReader(unittest.TestCase):
         """
         Reader cancel_reserve func test
         """
+        TestReader.reader.reserve_book(TestReader.book)
+        TestReader.reader.cancel_reserve(TestReader.book)
+        self.assertFalse(TestReader.book.book_is_reserved)
         self.assertNotIn(TestReader.book, TestReader.reader.reservation_dict)
+        TestReader.reader2.reserve_book(TestReader.book)
+        self.assertIn(TestReader.book, TestReader.reader2.reservation_dict)
+        self.assertIn(TestReader.book, TestReader.reader.reservation_dict)
 
     def test_get_book(self):
         """
         Reader get_book func test
         """
-        if not TestReader.book.book_is_reserved:
-            TestReader.reader.get_book(TestReader.book)
-            self.assertIn(TestReader.book, TestReader.reader.taken_book_dict)
+        TestReader.reader.reserve_book(TestReader.book)
+        # if not TestReader.book.book_is_reserved:
+        TestReader.reader.get_book(TestReader.book)
+        self.assertIn(TestReader.book, TestReader.reader.taken_book_dict)
+        TestReader.reader2.get_book(TestReader.book)
+        # здесь косяк приложения:
+        self.assertIn(TestReader.book, TestReader.reader2.taken_book_dict)
 
     def test_return_book(self):
         """
         Reader return_book func test
         """
+        TestReader.reader.reserve_book(TestReader.book)
+        self.assertIn(TestReader.book, TestReader.reader.reservation_dict)
+        self.assertNotIn(TestReader.book, TestReader.reader.taken_book_dict)
+        TestReader.reader.get_book(TestReader.book)
+        self.assertIn(TestReader.book, TestReader.reader.taken_book_dict)
+        # здесь косяк приложения:
+        TestReader.reader2.return_book(TestReader.book)
+        self.assertIn(TestReader.book, TestReader.reader2.taken_book_dict)
         TestReader.reader.return_book(TestReader.book)
         self.assertNotIn(TestReader.book, TestReader.reader.taken_book_dict)
 

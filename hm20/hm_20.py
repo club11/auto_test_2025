@@ -52,14 +52,14 @@ class Bank:
             self.start_balance = 0
 
 
-bank = Bank()
-bank.register_client(client_id="0000001", name="Siarhei")
-# print(bank.client_index, bank.name)
-bank.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
-# print(bank.start_balance)
-ass = bank.calc_interest_rate(client_id="0000001")
-# print(ass, '===')
-bank.close_deposit(client_id="0000001")
+# bank = Bank()
+# bank.register_client(client_id="0000001", name="Siarhei")
+# # print(bank.client_index, bank.name)
+# bank.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
+# # print(bank.start_balance)
+# ass = bank.calc_interest_rate(client_id="0000001")
+# # print(ass, '===')
+# bank.close_deposit(client_id="0000001")
 
 
 # 2. Библиотека aka library;
@@ -153,26 +153,27 @@ class Reader:
         if Reader.taken_book_dict[a_book] == self:
             a_book.return_book()
             Reader.taken_book_dict.pop(a_book)
+        else:
+            print('cannot return a book')
 
-
-book = Book(book_name="The Hobbit",
-            author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
-book_2 = Book(book_name="The Lord Of The Rings",
-              author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
-
-pool_of_books = [book, book_2]
-
-vasya = Reader("Vasya")
-petya = Reader("Petya")
-
-for the_book in pool_of_books:
-    vasya.reserve_book(the_book)
-    petya.reserve_book(the_book)
-    vasya.cancel_reserve(the_book)
-    petya.reserve_book(the_book)
-
-    vasya.get_book(the_book)
-    petya.get_book(the_book)
-    vasya.return_book(the_book)
-    petya.return_book(the_book)
-    vasya.get_book(the_book)
+# book = Book(book_name="The Hobbit",
+#             author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+# book_2 = Book(book_name="The Lord Of The Rings",
+#               author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
+#
+# pool_of_books = [book, book_2]
+#
+# vasya = Reader("Vasya")
+# petya = Reader("Petya")
+#
+# for the_book in pool_of_books:
+#     vasya.reserve_book(the_book)
+#     petya.reserve_book(the_book)
+#     vasya.cancel_reserve(the_book)
+#     petya.reserve_book(the_book)
+#
+#     vasya.get_book(the_book)
+#     petya.get_book(the_book)
+#     vasya.return_book(the_book)
+#     petya.return_book(the_book)
+#     vasya.get_book(the_book)
