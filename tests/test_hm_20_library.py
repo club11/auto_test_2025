@@ -70,7 +70,7 @@ class TestReader(unittest.TestCase):
                         author="The test author", num_pages=400, isbn="0006754023")
         cls.reader2 = Reader("Vasya")
         cls.book2 = Book(book_name="TheTEST2",
-                        author="The test author2", num_pages=400, isbn="0006754022")
+                         author="The test author2", num_pages=400, isbn="0006754022")
 
     @classmethod
     def tearDownClass(cls):
