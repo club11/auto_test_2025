@@ -1,5 +1,15 @@
 """Homework 12"""
 
+import logging
+
+logging.basicConfig(level=logging.INFO, filename="py_21log.log",
+                    format="%(asctime)s - %(levelname)s - %(message)s")
+
+logging.debug("A DEBUG Message")
+logging.info("An INFO")
+logging.warning("A WARNING")
+logging.error("An ERROR")
+logging.critical("A message of CRITICAL severity")
 
 # 1. Банковский вклад
 class Bank:
@@ -39,7 +49,6 @@ class Bank:
             money_to_return = self.start_balance
             for _ in range(self.capitalization_number):
                 money_to_return += money_to_return * capitalization_for_period
-                print('money_to_return', money_to_return)
             # More than one statement on a single line (multiple-statements):
             # for n in range(self.capitalization_number):money_to_return += \
             # Unused variable 'n' (unused-variable):
@@ -65,7 +74,6 @@ ass = bank.calc_interest_rate(client_id="0000001")
 # print(ass, '===')
 bank.close_deposit(client_id="0000001")
 
-
 # 2. Библиотека aka library;
 class Book:
     """
@@ -85,24 +93,28 @@ class Book:
          to reserve a book
         """
         self.book_is_reserved = True
+        return self.book_is_reserved
 
     def cancel_reserve(self):
         """
          cancel the reservation of a book
         """
         self.book_is_reserved = False
+        return self.book_is_reserved
 
     def get_book(self):
         """
         get a book from the pool
         """
         self.book_is_taken = True
+        return self.book_is_taken
 
     def return_book(self):
         """
         return a book to the pool
         """
         self.book_is_taken = False
+        return self.book_is_taken
 
 
 class Reader:
@@ -123,8 +135,9 @@ class Reader:
             a_book.reserve()
             Reader.reservation_dict[a_book] = self  # заменить на @classmethod
             print('book is reserved')
-        else:
-            print('cannot reserve - a book is reserved')
+            return Reader.reservation_dict
+        print('cannot reserve - a book is reserved')
+        return Reader.reservation_dict
 
     def cancel_reserve(self, a_book):
         """
@@ -133,8 +146,9 @@ class Reader:
         if Reader.reservation_dict[a_book] == self:
             a_book.cancel_reserve()
             self.reservation_dict.pop(a_book)
-        else:
-            print('cannot cancel reserve - a book is not reserved by this User')
+            return self.reservation_dict
+        print('cannot cancel reserve - a book is not reserved by this User')
+        return self.reservation_dict
 
     def get_book(self, a_book):
         """
@@ -157,26 +171,28 @@ class Reader:
         if Reader.taken_book_dict[a_book] == self:
             a_book.return_book()
             Reader.taken_book_dict.pop(a_book)
+            return Reader.taken_book_dict
+        return print('cannot return a book')
 
 
-book = Book(book_name="The Hobbit",
-            author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
-book_2 = Book(book_name="The Lord Of The Rings",
-              author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
+# book = Book(book_name="The Hobbit",
+#             author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+# book_2 = Book(book_name="The Lord Of The Rings",
+#               author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
 
-pool_of_books = [book, book_2]
-
-vasya = Reader("Vasya")
-petya = Reader("Petya")
-
-for the_book in pool_of_books:
-    vasya.reserve_book(the_book)
-    petya.reserve_book(the_book)
-    vasya.cancel_reserve(the_book)
-    petya.reserve_book(the_book)
-
-    vasya.get_book(the_book)
-    petya.get_book(the_book)
-    vasya.return_book(the_book)
-    petya.return_book(the_book)
-    vasya.get_book(the_book)
+# pool_of_books = [book, book_2]
+#
+# vasya = Reader("Vasya")
+# petya = Reader("Petya")
+#
+# for the_book in pool_of_books:
+#     vasya.reserve_book(the_book)
+#     petya.reserve_book(the_book)
+#     vasya.cancel_reserve(the_book)
+#     petya.reserve_book(the_book)
+#
+#     vasya.get_book(the_book)
+#     petya.get_book(the_book)
+#     vasya.return_book(the_book)
+#     petya.return_book(the_book)
+#     vasya.get_book(the_book)
