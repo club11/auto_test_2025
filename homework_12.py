@@ -11,6 +11,7 @@ logging.warning("A WARNING")
 logging.error("An ERROR")
 logging.critical("A message of CRITICAL severity")
 
+
 # 1. Банковский вклад
 class Bank:
     """
@@ -73,6 +74,7 @@ bank.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
 ass = bank.calc_interest_rate(client_id="0000001")
 # print(ass, '===')
 bank.close_deposit(client_id="0000001")
+
 
 # 2. Библиотека aka library;
 class Book:
