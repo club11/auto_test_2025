@@ -69,7 +69,6 @@ class TestLibrary:
         logger.info(f"check if book {TestLibrary.book2_instance}"
                     f"is not reserved in {TestLibrary.reader2_instance.reservation_dict}")
 
-
     def test_get_book(self):
         """
         test_get_book fuc
@@ -77,10 +76,10 @@ class TestLibrary:
         # не консистентно, только для теста как работает:
         reader3_instance = Reader("Venja")
         reader4_instance = Reader("Solomon")
-        book3_instance =  Book(book_name="The 3",
-                          author="Tolkien", num_pages=400, isbn="0000000001")
-        book4_instance =  Book(book_name="The 3",
-                          author="Tolkien", num_pages=400, isbn="0000000001")
+        book3_instance = Book(book_name="The 3",
+                              author="Tolkien", num_pages=400, isbn="0000000001")
+        book4_instance = Book(book_name="The 3",
+                              author="Tolkien", num_pages=400, isbn="0000000001")
         reader3_instance.reserve_book(book3_instance)
         assert book3_instance.book_is_reserved is True
         logger.info(f"Attempted to reserve a book: {book3_instance} "
@@ -101,7 +100,6 @@ class TestLibrary:
                     f"status: {reader3_instance.taken_book_dict} "
                     f"for reader: {reader3_instance.reader_name}")
 
-
     def test_return_book(self):
         """
         test_return_book fuc
@@ -120,6 +118,7 @@ class TestLibrary:
                     f"book added to taken books dict"
                     f"for reader: {TestLibrary.reader1_instance.reader_name}")
 
+
 # c использованием pytest:
 # @pytest.fixture
 # def reader_instance():
@@ -137,6 +136,7 @@ class TestLibrary:
 # @pytest.fixture
 # def book2_instance():
 #     return Book(book_name="Hobbit", author="by J.R.R.", num_pages=400, isbn="00067543")
+
 
 def test_py_reserve_book(reader_instance, reader2_instance, book_instance, book2_instance):
     """
@@ -176,6 +176,7 @@ def test_py_cancel_reserve(reader_instance, reader2_instance, book_instance, boo
     logger.info(f"Attempted to cancel reserve for a book: {book_instance.book_name} "
                 f"book added to {reader_instance.reservation_dict}")
 
+
 def test_py_test_get_book(reader_instance, reader2_instance, book_instance, book2_instance):
     """
     test_py_test_get_book fuc
@@ -199,6 +200,7 @@ def test_py_test_get_book(reader_instance, reader2_instance, book_instance, book
     logger.info(f"Attempted to get book: {book2_instance.book_name}"
                 f"for reader: {reader_instance.reader_name}"
                 f"is added to: {reader_instance.taken_book_dict}")
+
 
 def test_py_return_book(reader_instance, reader2_instance, book_instance):
     """

@@ -22,6 +22,7 @@ logging.critical("A message of CRITICAL severity")
 #     logger.info(f"initialize a client: {bank_instance.client_id} {bank_instance.name}")
 #     return bank_instance
 
+
 # С применением @pytest.mark.parametrize
 @pytest.mark.parametrize(
     'bank, a, b', [
@@ -33,9 +34,10 @@ def test_register_client(bank, a, b):
     test_register_client fuc
     """
     bank.register_client(a, b)
-    assert bank.client_id== "0000001"
+    assert bank.client_id == "0000001"
     assert bank.name == "Siarhei"
     logger.info(f"initialize a client test_register_client: {bank.client_id} {bank.name}")
+
 
 # С применением @pytest.fixture
 def test_open_deposit_account(initialize_bank, request):
@@ -53,6 +55,7 @@ def test_open_deposit_account(initialize_bank, request):
     logger.info(f"open_deposit_account: client_id: {initialize_bank.client_id} "
                 f"start_balance: {initialize_bank.start_balance} years: {initialize_bank.years} ")
 
+
 def test_close_deposit(initialize_bank):
     """
     test_close_deposit fuc
@@ -63,6 +66,7 @@ def test_close_deposit(initialize_bank):
     logger.info(f"close_deposit: client_id: {initialize_bank.client_id} "
                 f"client balance: {initialize_bank.start_balance}")
 
+
 def test_calc_interest_rate(initialize_bank):
     """
     test_calc_interest_rate fuc
@@ -71,6 +75,7 @@ def test_calc_interest_rate(initialize_bank):
     assert initialize_bank.calc_interest_rate(initialize_bank.client_id) == 112550.88
     logger.info(f"calc_interest_rate: client_id: {initialize_bank.client_id} "
                 f"interest_rate: {initialize_bank.calc_interest_rate(initialize_bank.client_id)}")
+
 
 def test_wrong_capitalization_number(initialize_bank):
     """

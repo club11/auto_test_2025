@@ -11,6 +11,7 @@ from homework_12 import Bank, Reader, Book
 #         "--debug", action="store_true", help="Enable debugging output"
 #     )
 
+
 @pytest.fixture
 def initialize_bank():
     """"
@@ -20,12 +21,14 @@ def initialize_bank():
     bank_instance.register_client(client_id="0000001", name="Siarhei")
     return bank_instance
 
+
 @pytest.fixture
 def reader_instance():
     """"
     reader_instance fixture
     """
     return Reader("Solomon")
+
 
 @pytest.fixture
 def reader2_instance():
@@ -34,6 +37,7 @@ def reader2_instance():
     """
     return Reader("Solomon2")
 
+
 @pytest.fixture
 def book_instance():
     """"
@@ -41,6 +45,7 @@ def book_instance():
     """
     return Book(book_name="The Hobbit",
                 author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
+
 
 @pytest.fixture
 def book2_instance():

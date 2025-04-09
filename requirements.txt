@@ -1,7 +1,10 @@
 astroid==3.3.9
+certifi==2025.1.31
+charset-normalizer==3.4.1
 colorama==0.4.6
 dill==0.3.9
 exceptiongroup==1.2.2
+idna==3.10
 iniconfig==2.1.0
 isort==6.0.1
 Jinja2==3.1.6
@@ -16,9 +19,11 @@ pytest-html==4.1.1
 pytest-metadata==3.1.1
 python-dateutil==2.9.0.post0
 PyYAML==6.0.2
+requests==2.32.3
 robotframework==7.2.2
 six==1.17.0
 tomli==2.2.1
 tomlkit==0.13.2
 typing_extensions==4.13.1
+urllib3==2.3.0
 
