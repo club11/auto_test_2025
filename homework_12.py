@@ -46,7 +46,6 @@ class Bank:
                          f" for client_id: {self.client_id}, "
                          f"start_balance: {self.start_balance}, years: {years}")
 
-
     def calc_interest_rate(self, client_id):
         """
          calculate the interest rate
@@ -92,7 +91,6 @@ class Book:
                      f"num_pages: {self.num_pages}, isbn: {self.isbn},"
                      f"book reserve status: is reserved: {self.book_is_reserved},"
                      f"book taken status: is reserved: {self.book_is_taken}")
-
 
     def reserve(self):
         """
@@ -202,7 +200,7 @@ if __name__ == "__main__":
     ass = bank.calc_interest_rate(client_id="0000001")
     bank.close_deposit(client_id="0000001")
     book_obj = Book(book_name="The Hobbit",
-         author="Books by J.R.R. Tolkien", num_pages=400, isbn="0000000001")
+                    author="Books by J.R.R. Tolkien", num_pages=400, isbn="0000000001")
     reader1_instance = Reader("Vasya")
     reader2_instance = Reader("Petja")
     reader1_instance.reserve_book(book_obj)

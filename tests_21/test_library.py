@@ -55,7 +55,6 @@ class TestLibrary:
         TestLibrary.reader1_instance.cancel_reserve(TestLibrary.book2_instance)
         assert TestLibrary.book2_instance in TestLibrary.reader2_instance.reservation_dict
 
-
     def test_get_book(self):
         """
         test_get_book fuc
@@ -75,7 +74,6 @@ class TestLibrary:
         assert book3_instance in reader3_instance.taken_book_dict
         reader3_instance.get_book(book4_instance)
         assert book4_instance in reader3_instance.taken_book_dict
-
 
     def test_return_book(self):
         """
