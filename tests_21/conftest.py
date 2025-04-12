@@ -1,15 +1,36 @@
 """Homework 21 Test case - conf test"""
 
+import sys
 import pytest
+from loguru import logger
 from homework_12 import Bank, Reader, Book
+# import logging
 
-# def pytest_addoption(parser):
-#     """"
-#      pytest_addoption func
-#     """
-#     parser.addoption(
-#         "--debug", action="store_true", help="Enable debugging output"
-#     )
+
+def pytest_addoption(parser):
+    """"
+     pytest_addoption func
+    """
+    parser.addoption(
+        "--log_level", default="INFO",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+    )
+
+
+@pytest.fixture(scope="session", autouse=True)
+def logging_status(request):
+    """"
+     логирование в консоль - но оно не срабатывает
+    """
+    loging_level = request.config.getoption("--log_level")
+    logger.remove()
+    logger.add(
+        sys.stdout,
+        level=loging_level,
+        colorize=True,
+        format="<magenta><u><i>{time:YYYY-MM-DD HH:mm:ss}</i></u>"
+               "</magenta> <magenta><u><i>{message}</i></u></magenta>",
+    )
 
 
 @pytest.fixture
