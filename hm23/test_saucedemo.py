@@ -11,9 +11,11 @@
 
 # 2.1 Нажать на кнопку "Add to cart":
 # 2.1.1 Нажать на кнопку - 1 элемент:
-# .inventory_list  > .inventory_item:nth-child(1)  > .inventory_item_description > .pricebar > [class="inventory_item_price"]
+# .inventory_list  > .inventory_item:nth-child(1)
+# > .inventory_item_description > .pricebar > [class="inventory_item_price"]
 # 2.1.1 Нажать на кнопку - 2 элемент:
-# .inventory_list  > .inventory_item:nth-child(2)  > .inventory_item_description > .pricebar > [class="inventory_item_price"]
+# .inventory_list  > .inventory_item:nth-child(2)
+# > .inventory_item_description > .pricebar > [class="inventory_item_price"]
 # ...
 # через xpath:
 # 2.1.1 Нажать на кнопку - 1 элемент. Но через id...:
@@ -27,9 +29,11 @@
 # 3. Экран корзины заказов:
 
 # 3.1 Удалить 1 элемент из корзины:
-# .cart_list > :nth-child(3) > .cart_item_label > .item_pricebar > button
+# .cart_list > :nth-child(3) > .cart_item_label
+# > .item_pricebar > button
 # 3.1 Удалить 2 элемент из корзины:
-# .cart_list > :nth-child(4) > .cart_item_label > .item_pricebar > button
+# .cart_list > :nth-child(4) > .cart_item_label
+# > .item_pricebar > button
 # ...
 
 # 3.2 Нажатие на ссылку 'Continue Shopping':   #continue-shopping
