@@ -6,7 +6,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 def click_button(locator, driver_web, timeout=10):
     """
     click button for common use
@@ -65,6 +64,7 @@ def main_page_remove(driver, el_num):
         return True
     return False
 
+
 def cart_page_delete_el(driver):
     """
     # 3. Экран корзины заказов:
@@ -92,6 +92,7 @@ def menu(driver):
     if menu_el:
         return True
     return False
+
 
 def log_out(driver):
     """
