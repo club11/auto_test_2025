@@ -16,10 +16,6 @@ def click_button(locator, driver_web, timeout=10):
     button.click()
 
 
-# driver_web = webdriver.Chrome()
-# driver_web.get("https://www.saucedemo.com")
-
-
 def login_page(user, password, driver):
     """
     1. Экран логина:
@@ -35,7 +31,8 @@ def login_page(user, password, driver):
     name_input.send_keys("secret_sauce")
     a_button = driver.find_element(By.ID, "login-button")
     click_button(a_button, driver, 5)
-    if a_button:
+    add_cart_button = driver.find_elements(By.CSS_SELECTOR, ".btn_inventory")
+    if add_cart_button:
         return True
     return False
 

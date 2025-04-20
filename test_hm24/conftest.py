@@ -2,10 +2,11 @@
 
 import pytest
 from selenium import webdriver
+from test_data import user_data_dict
 
 
-@pytest.fixture()
-def driver_got():
+@pytest.fixture
+def web_driver():
     """
     webdriver fixture
     """
@@ -20,6 +21,6 @@ def test_data():
     """
     test data
     """
-    user_name = "user-name"
-    password = "password"
+    user_name = user_data_dict['user_name']
+    password = user_data_dict['password']
     return user_name, password
