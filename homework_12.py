@@ -1,5 +1,16 @@
 """Homework 12"""
 
+import logging
+
+logging.basicConfig(level=logging.INFO, filename="py_21log.log",
+                    format="%(asctime)s - %(levelname)s - %(message)s")
+
+logging.debug("A DEBUG Message")
+logging.info("An INFO")
+logging.warning("A WARNING")
+logging.error("An ERROR")
+logging.critical("A message of CRITICAL severity")
+
 
 # 1. Банковский вклад
 class Bank:
@@ -21,6 +32,8 @@ class Bank:
         # Bank.client_index += 1
         self.name = name
         self.client_id = client_id
+        logging.info("(register_client) Attempt to register "
+                     "a client for client_id: %s for client name: %s", self.client_id, self.name)
 
     def open_deposit_account(self, client_id, start_balance, years):
         """
@@ -29,6 +42,10 @@ class Bank:
         if self.client_id == client_id:
             self.start_balance = start_balance
             self.years = years
+            logging.info("(open_deposit_account) Attempt open deposit account a client"
+                         " for client_id: %s, "
+                         "start_balance: {self.start_balance}, "
+                         "years: %s", self.client_id, self.years)
 
     def calc_interest_rate(self, client_id):
         """
@@ -39,13 +56,11 @@ class Bank:
             money_to_return = self.start_balance
             for _ in range(self.capitalization_number):
                 money_to_return += money_to_return * capitalization_for_period
-                print('money_to_return', money_to_return)
-            # More than one statement on a single line (multiple-statements):
-            # for n in range(self.capitalization_number):money_to_return += \
-            # Unused variable 'n' (unused-variable):
-            # (Decimal(money_to_return) * Decimal(capitalization_for_period))
-            answer_is = round(money_to_return, 2)  # до 2 знаков вместо формата + переменная!
+            answer_is = round(money_to_return, 2)
+            logging.info("(calc_interest_rate) Attempt to calculate clients interest rate"
+                         " for : %s, money to return: %s", client_id, answer_is)
             return answer_is
+        logging.info("(calc_interest_rate) no money to return")
         return 'No money - no honey'
 
     def close_deposit(self, client_id):
@@ -54,16 +69,9 @@ class Bank:
         """
         if self.client_id == client_id:
             self.start_balance = 0
-
-
-bank = Bank()
-bank.register_client(client_id="0000001", name="Siarhei")
-# print(bank.client_index, bank.name)
-bank.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
-# print(bank.start_balance)
-ass = bank.calc_interest_rate(client_id="0000001")
-# print(ass, '===')
-bank.close_deposit(client_id="0000001")
+            logging.info("(calc_interest_rate) Attempt to close clients deposit"
+                         " for client_id: %s, balance is: %s."
+                         " Deposit os closed", self.client_id, self.start_balance)
 
 
 # 2. Библиотека aka library;
@@ -79,30 +87,45 @@ class Book:
         self.isbn = isbn
         self.book_is_reserved = False
         self.book_is_taken = False
+        logging.info("(register_client): Attempt to initialize a book object"
+                     " book name: %s, author: %s,"
+                     "num_pages: %s, isbn: %s,"
+                     "book reserve status: is reserved: %s,"
+                     "book taken status: is reserved: %s",
+                     self.book_name, self.author, self.num_pages,
+                     self.isbn, self.book_is_reserved, self.book_is_taken)
 
     def reserve(self):
         """
          to reserve a book
         """
         self.book_is_reserved = True
+        logging.info("(reserve): book is reserved")
+        return self.book_is_reserved
 
     def cancel_reserve(self):
         """
          cancel the reservation of a book
         """
         self.book_is_reserved = False
+        logging.info("(cancel_reserve): cancel reserve of book %s", self.book_is_reserved)
+        return self.book_is_reserved
 
     def get_book(self):
         """
         get a book from the pool
         """
         self.book_is_taken = True
+        logging.info("(get_book): get book, taken book status: %s", self.book_is_taken)
+        return self.book_is_taken
 
     def return_book(self):
         """
         return a book to the pool
         """
         self.book_is_taken = False
+        logging.info("(return_book): return book, book status: is returned")
+        return self.book_is_taken
 
 
 class Reader:
@@ -121,10 +144,11 @@ class Reader:
         """
         if not a_book.book_is_reserved:
             a_book.reserve()
-            Reader.reservation_dict[a_book] = self  # заменить на @classmethod
-            print('book is reserved')
-        else:
-            print('cannot reserve - a book is reserved')
+            Reader.reservation_dict[a_book] = self
+            logging.info("(reserve_book): book is reserved")
+            return Reader.reservation_dict
+        logging.error('(reserve_book): cannot reserve - a book is not reserved')
+        return Reader.reservation_dict
 
     def cancel_reserve(self, a_book):
         """
@@ -133,8 +157,11 @@ class Reader:
         if Reader.reservation_dict[a_book] == self:
             a_book.cancel_reserve()
             self.reservation_dict.pop(a_book)
-        else:
-            print('cannot cancel reserve - a book is not reserved by this User')
+            logging.info('(cancel_reserve): book reservation is canceled')
+            return self.reservation_dict
+        logging.info('(cancel_reserve): cannot cancel reserve - '
+                     'a book is not reserved by this reader')
+        return self.reservation_dict
 
     def get_book(self, a_book):
         """
@@ -143,12 +170,16 @@ class Reader:
         if not a_book.book_is_reserved:
             a_book.get_book()
             Reader.taken_book_dict[a_book] = self
+            logging.info('(get_book): book {a_book.book_name} '
+                         'is taken by reader: %s', Reader.__name__)
         elif Reader.reservation_dict[a_book] == self:
             a_book.get_book()
             self.cancel_reserve(a_book)
             Reader.taken_book_dict[a_book] = self
+            logging.info('(get_book): book %s '
+                         'is taken by reader: %s', a_book.book_name, Reader.__name__)
         else:
-            print('cannot get a book  - is already taken by another User')
+            logging.info('(get_book): cannot get a book - is already taken by another reader')
 
     def return_book(self, a_book):
         """
@@ -157,26 +188,24 @@ class Reader:
         if Reader.taken_book_dict[a_book] == self:
             a_book.return_book()
             Reader.taken_book_dict.pop(a_book)
+            logging.error('(return_book): book %s '
+                          'is returned by reader %s', a_book.book_name, Reader.__name__)
+            return Reader.taken_book_dict
+        logging.error('(return_book): cannot return a book - '
+                      'is already taken by another reader')
+        return print('cannot return a book')
 
 
-book = Book(book_name="The Hobbit",
-            author="Books by J.R.R. Tolkien", num_pages=400, isbn="0006754023")
-book_2 = Book(book_name="The Lord Of The Rings",
-              author="Books by J.R.R. Tolkien", num_pages=800, isbn="0006777023")
-
-pool_of_books = [book, book_2]
-
-vasya = Reader("Vasya")
-petya = Reader("Petya")
-
-for the_book in pool_of_books:
-    vasya.reserve_book(the_book)
-    petya.reserve_book(the_book)
-    vasya.cancel_reserve(the_book)
-    petya.reserve_book(the_book)
-
-    vasya.get_book(the_book)
-    petya.get_book(the_book)
-    vasya.return_book(the_book)
-    petya.return_book(the_book)
-    vasya.get_book(the_book)
+if __name__ == "__main__":
+    bank = Bank()
+    bank.register_client(client_id="0000001", name="Siarhei")
+    bank.open_deposit_account(client_id="0000001", start_balance=100000, years=1)
+    ass = bank.calc_interest_rate(client_id="0000001")
+    bank.close_deposit(client_id="0000001")
+    book_obj = Book(book_name="The Hobbit",
+                    author="Books by J.R.R. Tolkien", num_pages=400, isbn="0000000001")
+    reader1_instance = Reader("Vasya")
+    reader2_instance = Reader("Petja")
+    reader1_instance.reserve_book(book_obj)
+    reader1_instance.get_book(book_obj)
+    reader1_instance.return_book(book_obj)
