@@ -1,5 +1,6 @@
 """Homework 25 - saucedemo.com - user test data"""
 
+
 class UserCredentials:
     """
     class UserCredentials
