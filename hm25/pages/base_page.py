@@ -29,7 +29,7 @@ class BasePage:
         button = self.driver.find_element(*locator)
         button.click()
 
-    def choose_el(self, locator, timeout=2):
+    def click_el(self, locator, timeout=2):
         """
          click button with timeout check
          """

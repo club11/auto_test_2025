@@ -18,17 +18,11 @@ class ProductListPage(BasePage):
     log_out = (By.ID, "logout_sidebar_link")
     login_button = (By.CLASS_NAME, "btn_action")
 
-    # def __init__(self, driver, url):
-    #     """
-    #  init
-    # """
-    #     super().__init__(driver, url)
-
     def add_el_to_bucket(self):
         """
      add to bucket
     """
-        self.choose_el(self.add_button)
+        self.click_el(self.add_button)
 
     def el_is_added(self):
         """
@@ -46,20 +40,20 @@ class ProductListPage(BasePage):
         """
      remove el from bucket
     """
-        self.choose_el(self.remove_button)
+        self.click_el(self.remove_button)
 
     def to_bucket_page(self):
         """
      click bucket icon
     """
-        self.choose_el(self.bucket_page)
+        self.click_el(self.bucket_page)
         return CartPage(self.driver, self.url)
 
     def click_menu(self):
         """
      choose el menu
     """
-        self.choose_el(self.menu)
+        self.click_el(self.menu)
 
     def is_menu_clickable(self):
         """
@@ -71,7 +65,7 @@ class ProductListPage(BasePage):
         """
      choose el log out menu
     """
-        self.choose_el(self.log_out)
+        self.click_el(self.log_out)
 
     def is_log_out_successful(self):
         """

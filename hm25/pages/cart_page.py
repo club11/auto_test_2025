@@ -13,17 +13,11 @@ class CartPage(BasePage):
     error_message = (By.CSS_SELECTOR, "[data-test='error']")
     continue_shopping_el = (By.ID, "continue-shopping")
 
-    # def __init__(self, driver, url):
-    #   """
-    #    init
-    #   """
-    #   super().__init__(driver, url)
-
     def remove_el_from_bucket(self):
         """
      remove el from the bucket
     """
-        self.choose_el(self.remove_button)
+        self.click_el(self.remove_button)
 
     def el_is_deleted(self):
         """
@@ -35,4 +29,4 @@ class CartPage(BasePage):
         """
      push button continue shopping
     """
-        self.choose_el(self.continue_shopping_el)
+        self.click_el(self.continue_shopping_el)
