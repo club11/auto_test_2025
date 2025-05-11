@@ -1,6 +1,5 @@
 """Tests API"""
 
-#from Tests.config.config_log import logger
 from hm28.API.request_data import (
     get_booking_ids,
     get_booking_by_id,
