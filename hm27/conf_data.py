@@ -68,5 +68,9 @@ class RequiredData:
         """
         show class fields
         """
-        return print(self.RegisterData, self.CreateBookingData,
-              self.UpdateBookingData, self.UpdatePartialBookingData)
+        return print(
+            self.RegisterData,
+            self.CreateBookingData,
+            self.UpdateBookingData,
+            self.UpdatePartialBookingData,
+        )
