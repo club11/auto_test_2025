@@ -3,51 +3,30 @@
 
 import json
 import requests
+from common_commands import make_request
 from hm28.API.conf_data import Conf, RequiredData
 
 
 def get_booking_ids():
     """get booking ids"""
     endpoint = "/booking"
-    try:
-        response = requests.get(
-            f"{Conf.URL}{endpoint}", timeout=5
-        )
-        return response
-    except requests.exceptions.RequestException:
-        return None
+    return make_request(requests.get, f"{Conf.URL}{endpoint}")
 
 
 def get_booking_by_id(booking_id=1):
     """Get booking by id"""
     endpoint = f"/booking/{booking_id}"
-    headers = {
-        "Accept": "application/json",
-    }
-    try:
-        response = requests.get(
-            f"{Conf.URL}{endpoint}", headers=headers, timeout=5
-        )
-        return response
-    except requests.exceptions.RequestException:
-        return None
+    return make_request(requests.get, f"{Conf.URL}{endpoint}")
 
 
 def create_booking(token):
     """Create booking for id"""
     endpoint = "/booking"
     payload = json.dumps(RequiredData.CreateBookingData)
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {token}"
-    }
-    try:
-        response = requests.post(
-            f"{Conf.URL}{endpoint}", data=payload, headers=headers,  timeout=5
-        )
-        return response
-    except requests.exceptions.RequestException:
-        return None
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {token}"}
+    return make_request(
+        requests.post, f"{Conf.URL}{endpoint}", a_data=payload, a_header=headers
+    )
 
 
 def update_booking(token, booking_id):
@@ -59,13 +38,9 @@ def update_booking(token, booking_id):
         "Accept": "application/json",
         "Cookie": f"token={token}",
     }
-    try:
-        response = requests.put(
-            f"{Conf.URL}{endpoint}", data=payload, headers=headers, timeout=5
-        )
-        return response
-    except requests.exceptions.RequestException:
-        return None
+    return make_request(
+        requests.put, f"{Conf.URL}{endpoint}", a_data=payload, a_header=headers
+    )
 
 
 def partial_update_booking(token, booking_id):
@@ -77,10 +52,6 @@ def partial_update_booking(token, booking_id):
         "Accept": "application/json",
         "Cookie": f"token={token}",
     }
-    try:
-        response = requests.patch(
-            f"{Conf.URL}{endpoint}", data=payload, headers=headers, timeout=5
-        )
-        return response
-    except requests.exceptions.RequestException:
-        return None
+    return make_request(
+        requests.patch, f"{Conf.URL}{endpoint}", a_data=payload, a_header=headers
+    )
