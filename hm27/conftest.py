@@ -4,7 +4,8 @@ import json
 import pytest
 import requests
 # from hm28.API.conf_data import Conf, RequiredData
-from conf_data import Conf, RequiredData
+# from conf_data import Conf, RequiredData
+from hm27.conf_data import Conf, RequiredData
 
 
 @pytest.fixture
