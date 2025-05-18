@@ -56,4 +56,3 @@ def partial_update_booking(token, booking_id):
     return make_request(
         requests.patch, f"{Conf.URL}{endpoint}", a_data=payload, a_header=headers
     )
-
