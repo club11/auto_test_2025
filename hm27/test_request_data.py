@@ -1,6 +1,7 @@
 """Tests API"""
 
-from hm28.API.request_data import (
+# from hm28.API.request_data import (
+from hm27.request_data import (
     get_booking_ids,
     get_booking_by_id,
     create_booking,
