@@ -5,7 +5,6 @@ import json
 import requests
 #from common_commands import make_request
 from hm27.common_commands import make_request
-# from hm28.API.conf_data import Conf, RequiredData
 from hm27.conf_data import Conf, RequiredData
 
 
